@@ -51,7 +51,7 @@ public:
     cocos2d::Scene* getSceneGraph() const;
     
     /**
-     Return the CollisionManager. It is added as a child of the Scene to simplify the codes.
+     Return the AnimationManager. It is added as a child of the Scene to simplify the codes.
      @return The `AnimationManager` of the scene
      */
     AnimationManager* getAnimationManager() const;
@@ -144,6 +144,9 @@ protected:
     
     dragonBones::CCArmatureDisplay* createArmatureDisplay(const buffers::DragonBones* dragonBonesBuffer) const;
     void parseArmatureDisplay(dragonBones::CCArmatureDisplay* armatureDisplay, const buffers::DragonBones* dragonBonesBuffer) const;
+    
+    cocos2d::MotionStreak* createMotionStreak(const buffers::MotionStreak* motionStreakBuffer) const;
+    void parseMotionStreak(cocos2d::MotionStreak* motionStreak, const buffers::MotionStreak* motionStreakBuffer) const;
     
     void setupSpriteFrames();
     void setupCollisionMatrix();

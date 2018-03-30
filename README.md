@@ -56,6 +56,7 @@ Supported nodes:
 * `Collider`
 * `Prefab`
 * `DragonBones`
+* `MotionStreak`
 
 Supporting JavaScript scripts would be overkill. If you need JavaScript scripting
 support, just use Creator.
@@ -64,7 +65,7 @@ support, just use Creator.
 
 Can fetch [this branch](https://github.com/minggo/cocos2d-x/tree/creator-cpp-support-test-v315) and run `cpp-empty-test` or `lua-empty-test`. The branch based on v3.15, don't forget to update external libraries.
 
-Currently support on Mac, iOS Android, Windows.
+Currently support on Mac, iOS, Android and Windows.
 
 
 ## How to generate the needed files
@@ -82,7 +83,9 @@ You will find:
 
 ## Header search path
 
-For cpp projects, should just add `reader` into header search path. For lua projects, should add these header path:
+For cpp projects, just add `reader` into header search path.
+
+For lua projects, add the following header paths:
 
 * reader
 * reader/collider
@@ -140,7 +143,7 @@ __If developing with Lua, then need to add `CreatorReaderBinding.cpp` into [plug
 
 void some_function()
 {
-    creator::CreatorReader* reader = creator::CreatorReader::createWithFilename("creator/CreatorSprites.ccreator");
+    creator::CreatorReader* reader = creator::CreatorReader::createWithFilename("creator/scenes/sprites/CreatorSprites.ccreator");
 
     // will create the needed spritesheets + design resolution
     reader->setup();
@@ -168,7 +171,7 @@ register_creator_reader_manual(L);
 Use in lua
 
 ```lua
-local creatorReader = cc.CreatorReader:createWithFilename('creator/CreatorSprites.ccreator')
+local creatorReader = creator.CreatorReader:createWithFilename('creator/CreatorSprites.ccreator')
 creatorReader:setup()
 local scene = creatorReader:getSceneGraph()
 cc.Director:getInstance():replaceScene(scene)
@@ -203,5 +206,4 @@ colliderManager->registerCollitionCallback([=](creator::Contract::CollisionType 
 More features of `colliderManager` can refer to [the header file](https://github.com/cocos2d/creator_to_cocos2dx/tree/master/creator_project/packages/creator-luacpp-support/reader/collider/ColliderManager.h).
 
 ## Use the plugin in your Cocos Creator project
-
-Currently, the plugin is not completed enough, so we don't put it into Cocos Creator plugin store. But you can copy `creator_project/packages/creator_luacpp_support` into `Cocos Creator project/packages`, then you will see the plugin in __Project -> LuaCPP Support__. 
+You can install the released version from Creator, or you can copy `creator_project/packages/creator_luacpp_support` into `Cocos Creator project/packages`, then you will see the plugin in __Project -> LuaCPP Support__. 
